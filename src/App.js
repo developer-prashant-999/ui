@@ -1,14 +1,16 @@
-import {FACEMESH_TESSELATION,POSE_CONNECTIONS,HAND_CONNECTIONS, Holistic} from "@mediapipe/holistic";
+import {FACEMESH_CONTOURS,POSE_CONNECTIONS,HAND_CONNECTIONS, Holistic} from "@mediapipe/holistic";
 import React, { useRef, useEffect } from "react";
-import * as Facemesh from "@mediapipe/face_mesh";
+// import * as Facemesh from "@mediapipe/face_mesh";
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
 function App() {
-  // console.log(faceLandmarks);
+  // console.log(POSE_CONNECTIONS.length + HAND_CONNECTIONS.length );
+  // var data = Array.prototype.concat.apply([],HAND_CONNECTIONS)
+
+  // console.log(data.length);
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-
   const connect = window.drawConnectors;
   
   var camera = null;
@@ -41,7 +43,7 @@ function App() {
                   {color: '#00FF00', lineWidth: 4});
     connect(canvasCtx, results.poseLandmarks,
     {color: '#FF0000', lineWidth: 2});
-    connect(canvasCtx, results.faceLandmarks, FACEMESH_TESSELATION,
+    connect(canvasCtx, results.faceLandmarks, FACEMESH_CONTOURS,
     {color: '#CC0000', lineWidth: 1});
     connect(canvasCtx, results.leftHandLandmarks, HAND_CONNECTIONS,
     {color: '#CC0000', lineWidth: 5});
@@ -90,34 +92,12 @@ function App() {
   return (
     <center>
       <div className="App">
-        <Webcam
+        <Webcam className="webcam"
           ref={webcamRef}
-          style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            left: 0,
-            right: 0,
-            textAlign: "center",
-            zindex: 9,
-            width: 640,
-            height: 480,
-          }}
         />{" "}
         <canvas
           ref={canvasRef}
-          className="output_canvas"
-          style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            left: 0,
-            right: 0,
-            textAlign: "center",
-            zindex: 9,
-            width: 640,
-            height: 480,
-          }}
+          className="canvas"
         ></canvas>
       </div>
     </center>

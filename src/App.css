@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,28 @@
   to {
     transform: rotate(360deg);
   }
+} */
+.webcam {
+  position: relative;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 9;
+  /* width: 1640;
+  height: 1480; */
+}
+.canvas {
+  position: relative;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 9;
 }
